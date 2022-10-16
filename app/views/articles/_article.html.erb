@@ -1,12 +1,24 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
-
-</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th>Creado</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.description %></td>
+      <td><%= time_ago_in_words(article.created_at) %></td>
+      <td>
+      <%= link_to "Show this article", article %>
+      <%= link_to "Edit this article", edit_article_path(article) %>
+      <td><%= button_to "Destroy this article", article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

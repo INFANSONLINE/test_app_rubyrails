@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+ p {
+    color: grey;
+ }
+
+ .dido{
+   color: black;
+ }
+ .jumb {
+   padding: 2rem 1rem;
+   margin-bottom: 2rem;
+   background-image: url('diarios.jpg');
+   background-size: cover;
+   background-position: center center;
+   border-radius: .3rem;
+   height: 300px;
+ }
+
+ #home-container{
+   margin-top: 25px;
+ }
