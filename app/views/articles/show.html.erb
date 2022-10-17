@@ -1,17 +1,18 @@
-<p style="color: green"><%= notice %></p>
-  
-  <table class="table">
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Descripción</th>
-      <th colspan="4">Acciones</th>
-    </tr>
-  </thead>
-  <tr>
-  <td><%= @article.title %></td>
-  <td><%= @article.description %></td>
-  <td><%= link_to "Edit this article", edit_article_path(@article) %></td>
+  <%= render 'layouts/messages'%>
+
+<div class= "container">
+<div class="card text-center">
+  <div class="card-header"><%= @article.title %>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= simple_format(@article.description) %></p>
+      <td><%= link_to "Editar", edit_article_path(@article), class:"btn btn-success" %></td>
+  </div>
+  <div class="card-footer text-muted"><%= time_ago_in_words(@article.created_at)%>
+  </div>
+</div>
+</div>
+
   <td><%= link_to "Back to articles", articles_path %></td>
   <td><%= button_to "Destroy this article", @article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
  </tr>
