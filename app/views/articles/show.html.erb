@@ -1,3 +1,4 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
 
 <div class= "container">
@@ -11,9 +12,10 @@
   <div class="card-footer text-muted"><%= time_ago_in_words(@article.created_at)%>
   </div>
 </div>
-</div>
+</div><br>
 
   <td><%= link_to "Back to articles", articles_path %></td>
   <td><%= button_to "Destroy this article", @article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
  </tr>
   </table>
+  </div>
