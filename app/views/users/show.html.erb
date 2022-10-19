@@ -1,6 +1,6 @@
 <div class= "container">
 
-<p class="color: green"><%= notice %></p>
+<p style="color: green"><%= notice %></p>
 
 <div class="card text-center">
   <div class="card-header"><%= @user.username %>
@@ -8,13 +8,14 @@
   <div class="card-body">
     <p class="card-text"><%= simple_format(@user.email) %></p>
       <td><%= link_to "Editar", edit_user_path(@user), class:"btn btn-success" %></td>
+      <td><%= link_to "Volver", users_path, class:"btn btn-success" %></td>
   </div>
   <div class="card-footer text-muted"><%= time_ago_in_words(@user.created_at)%>
   </div>
 </div>
-</div>
+</div><br>
 
-  <td><%= link_to "Back to usuarios", users_path %></td>
-  <td><%= button_to "Destroy this usuario", @user, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Usuario?"}} %></td>
+<%= render 'articles/article' %>
+
  </tr>
   </table>

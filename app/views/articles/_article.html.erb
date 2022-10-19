@@ -13,7 +13,7 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= truncate(article.description, lenght:4) %></td>
-      <td><%= article.user.username %></td>
+      <td><%= link_to article.user.username, user_path(article.user)%></td>
       <td>
       <%= link_to "Ver Artículo", article %>
       <%= link_to "Editar", edit_article_path(article) %>
