@@ -1,7 +1,7 @@
-  <nav class="navbar navbar-expand-lg" style="background-color: black;">
+  <nav class="navbar navbar-expand-lg" style="background-color: rgb(13, 2, 81);">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/">Curso App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-white" href="/">TRIPSO</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,15 +9,34 @@
         <li class="nav-item">
           <a class="nav-link active text-white" aria-current="page" href="/about">Home</a>
         </li>
+        
+      <% if logged_in %>
         <li class="nav-item ">
-          <a class="nav-link text-white" href="/articles">Articles</a>
+          <a class="nav-link text-white" href="/articles">Itinerarios</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link text-white" href="/users">Usuarios</a>
         </li>
-        <li class="nav-item ">
+
+          <li class="nav-item ">
+          <%= link_to 'Logout', logout_path, class: "nav-link text-white", method: :delete %> 
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.username %>
+          </a>
+          <ul class="dropdown-menu">
+            <%= link_to "Ver Perfil", user_path(current_user), class:"dropdown-item" %>
+          </ul>
+          </li>
+        <% else %>
+          <li class="nav-item ">
           <a class="nav-link text-white" href="/login">Login</a>
-        </li>
+          </li>
+          <li class="nav-item ">
+          <a class="nav-link text-white" href="/users/new">Registrarse</a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

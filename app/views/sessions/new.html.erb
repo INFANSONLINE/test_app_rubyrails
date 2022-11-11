@@ -1,0 +1,25 @@
+
+<p style="color: red"><%= notice %></p>
+<br><br>
+<%= form_with(scope: :session, url: login_path) do |form| %>
+
+<div class= "trip">
+</div><br>
+<div class="text-center">
+
+  <div class="mb-3">
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :Contraseña, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit "Login", class: "btn btn-success mb-3" %><br><br>
+  </div>
+</div>
+
+<% end %>

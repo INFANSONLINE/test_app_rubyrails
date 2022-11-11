@@ -7,7 +7,9 @@
   </div>
   <div class="card-body">
     <p class="card-text"><%= simple_format(@user.email) %></p>
+    <% if logged_in && @user == current_user %>
       <td><%= link_to "Editar", edit_user_path(@user), class:"btn btn-success" %></td>
+    <% end %>
       <td><%= link_to "Volver", users_path, class:"btn btn-success" %></td>
   </div>
   <div class="card-footer text-muted"><%= time_ago_in_words(@user.created_at)%>
@@ -16,6 +18,10 @@
 </div><br>
 
 <%= render 'articles/article' %>
+
+<div class="flickr_pagination">
+    <%= will_paginate @articles, :container => false %>
+</div> 
 
  </tr>
   </table>

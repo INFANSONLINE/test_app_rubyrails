@@ -15,10 +15,12 @@
       <td><%= truncate(article.description, lenght:4) %></td>
       <td><%= link_to article.user.username, user_path(article.user)%></td>
       <td>
-      <%= link_to "Ver Artículo", article %>
+      <%= link_to "Ver Itinerario", article %>
+      <% if logged_in && article.user == current_user %>
       <%= link_to "Editar", edit_article_path(article) %>
-      <td><%= button_to "Eliminar Artículo", article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
+      <td><%= button_to "Eliminar", article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
       </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

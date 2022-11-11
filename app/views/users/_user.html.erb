@@ -4,7 +4,7 @@
     <tr>
       <th>Titulo</th>
       <th>Email</th>
-      <th>Artículos</th>
+      <th>Itinerarios</th>
       <th>Miembro hace:</th>
       <th colspan="3">Acciones</th>
     </tr>
@@ -17,9 +17,10 @@
       <td><%= user.articles.count %></td>
       <td><%= time_ago_in_words(user.created_at) %></td>
       <td>
-
+      <% if logged_in && user == current_user %>
       <%= link_to "Editar", edit_user_path(user), class:"btn btn-success" %>
       <td><%= button_to "Eliminar", @user, class:"btn btn-danger", method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Usuario?"}} %></td>
+      <% end %>
       </td>
     </tr>
     <% end %>

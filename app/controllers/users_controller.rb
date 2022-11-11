@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /users/1 or /users/1.json
   def show
-    @articles = @user.articles
+    @articles = @user.articles.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /users/new
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to articles_path, notice: "¡Bienvenid@ #{@user.username} a tus artículos!" }
         format.json { render :show, status: :created, location: @user }
       else
@@ -68,4 +70,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+
+    def require_same_user
+      if current_user != @user
+        flash[:notice] = "No tienes permiso para relizar esta acción"
+        redirect_to @user
+    end
+  end
+
 end
