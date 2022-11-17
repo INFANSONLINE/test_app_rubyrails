@@ -1,23 +1,37 @@
-  <nav class="navbar navbar-expand-lg" style="background-color: black;">
+  <nav class="navbar navbar-expand-lg" style="background-color: rgb(9, 3, 84);">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/">Curso App</a>
+    <%= link_to image_tag("tripsoblan.png", height: 50, :alt => "logo"), "/" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="/about">Home</a>
+          <a class="nav-link active text-white" aria-current="page" href="/about">¿Quienes Somos?</a>
         </li>
+        <% if logged_in? %>
         <li class="nav-item ">
-          <a class="nav-link text-white" href="/articles">Articles</a>
+          <a class="nav-link text-white" href="/articles">Itinerarios</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link text-white" href="/users">Usuarios</a>
         </li>
+        <% end %>
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+          <%= link_to current_user.username, user_path(current_user), class:"nav-link text-white" %>
+        </li>
         <li class="nav-item ">
+          <%= link_to 'logout', logout_path, class:"nav-link text-white", method: :delete %>
+        </li>
+        <% else %>
+          <li class="nav-item ">
           <a class="nav-link text-white" href="/login">Login</a>
         </li>
+          <li class="nav-item ">
+          <a class="nav-link text-white" href="/signup">Registrate</a>
+        </li>
+        <% end %>
       </ul>
     </div>
   </div>

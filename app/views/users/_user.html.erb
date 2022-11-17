@@ -18,10 +18,12 @@
       <td><%= time_ago_in_words(user.created_at) %></td>
       <td>
 
+      <% if logged_in? && user == current_user %>
       <%= link_to "Editar", edit_user_path(user), class:"btn btn-success" %>
-      <td><%= button_to "Eliminar", @user, class:"btn btn-danger", method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Usuario?"}} %></td>
+      <td><%= button_to "Eliminar", user_path(current_user), class:"btn btn-danger", method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Usuario?"}} %></td>
       </td>
     </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

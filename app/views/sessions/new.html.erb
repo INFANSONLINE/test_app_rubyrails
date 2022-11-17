@@ -1,0 +1,34 @@
+<br>
+<div  class="container text-center">
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+
+<%= image_tag "tripso.png", height: 150 %>
+
+<%= form_with(scope: :session, url: login_path) do |form| %>
+
+
+<div class="container text-center">
+
+  <div class="mb-3">
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :contraseña, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit "Login", class: "btn btn-success mb-3"%><br><br>
+  </div>
+</div>
+
+<% end %>
+
+
+
+
+
+</div>

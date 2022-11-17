@@ -1,5 +1,6 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
 
 <div class= "container">
 <div class="card text-center">
@@ -7,15 +8,19 @@
   </div>
   <div class="card-body">
     <p class="card-text"><%= simple_format(@article.description) %></p>
+    <% if logged_in? && @article.user == @current_user %>
       <td><%= link_to "Editar", edit_article_path(@article), class:"btn btn-success" %></td>
+      <% end %>
   </div>
   <div class="card-footer text-muted"><%= time_ago_in_words(@article.created_at)%>
   </div>
 </div>
 </div><br>
 
-  <td><%= link_to "Back to articles", articles_path %></td>
-  <td><%= button_to "Destroy this article", @article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
+  <td><%= link_to "Volver", articles_path %></td>
+  <% if logged_in? && @article.user == @current_user %>
+  <td><%= button_to "Eliminar Itinerario", @article, method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
+  <% end %>
  </tr>
   </table>
   </div>
