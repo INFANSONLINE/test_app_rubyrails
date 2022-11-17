@@ -4,10 +4,14 @@
 <h1 class="limbo text-center">Itinerarios</h1>
 
 <div id="articles">
-
+    
     <%= render 'article' %>
 
-</div>
+<div class="flickr_pagination">
+    <%= will_paginate @articles, :container => false %>
+</div> 
+
+</div><br>
 
 <%= link_to "Crear Itinerario", new_article_path %>
 </div>
