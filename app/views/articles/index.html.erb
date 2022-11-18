@@ -7,7 +7,12 @@
 
     <%= render 'article' %>
 
-</div>
+</div><br>
+
+   <div class="flickr_pagination">
+
+    <%= will_paginate @articles, :container => false %>
+  </div>
 
 <%= link_to "Crear Itinerario", new_article_path %>
 </div>

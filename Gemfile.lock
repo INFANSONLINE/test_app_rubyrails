@@ -224,7 +224,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  will_paginate (~> 3.1)
+  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 2.7.3p183

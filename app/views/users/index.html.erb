@@ -4,4 +4,10 @@
 <h1 class="limbo text-center">Usuarios</h1>
     <%= render 'users/user' %><br>
 
+  <div class="flickr_pagination">
+
+    <%= will_paginate @users, :container => false %>
+  </div>
+
+
 </div>
