@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :require_user
-  before_action :require_same_user, only: %i[edit update destroy ]
+  before_action :require_same_user, only: %i[ edit update destroy ]
 
   # GET /articles or /articles.json
   def index
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user && !current_user.admin?
       flash[:alert] =  "No tiene permisos para realizar esta acción"
       redirect_to @article
       end

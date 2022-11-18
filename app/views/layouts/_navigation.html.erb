@@ -1,7 +1,7 @@
   <nav class="navbar navbar-expand-lg" style="background-color: rgb(9, 3, 84);">
   <div class="container-fluid">
     <%= link_to image_tag("tripsoblan.png", height: 50, :alt => "logo"), "/" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -18,9 +18,7 @@
         </li>
         <% end %>
         <% if logged_in? %>
-          <li class="nav-item dropdown">
-          <%= link_to current_user.username, user_path(current_user), class:"nav-link text-white" %>
-        </li>
+
         <li class="nav-item ">
           <%= link_to 'logout', logout_path, class:"nav-link text-white", method: :delete %>
         </li>
@@ -33,6 +31,14 @@
         </li>
         <% end %>
       </ul>
+      <% if logged_in? %>
+        <li class="nav-link dropdown text-end">
+          <%= link_to current_user.username, user_path(current_user), class:"nav-link text-white" if logged_in? %>
+        </li>
+        <li class="nav-link text-white text-end">
+        <%= "(ADMIN)" if current_user.admin? %>
+        </li>
+        <% end %>
     </div>
   </div>
 </nav>

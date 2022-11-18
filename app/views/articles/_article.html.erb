@@ -15,7 +15,7 @@
       <td><%= truncate(article.description, lenght:4) %></td>
       <td><%= link_to article.user.username, user_path(article.user)%></td>
       <td>
-      <% if logged_in? && article.user == current_user %>
+      <% if logged_in? && (article.user == current_user || current_user.admin?) %>
       <%= link_to "Editar", edit_article_path(article), class:"btn btn-success" %>
       <td><%= button_to "Eliminar Itinerario", article, class:"btn btn-danger", method: :delete, form: { data: { turbo_confirm:"¿Seguro quieres eliminar este Articulo?"}} %></td>
       <% end %>
