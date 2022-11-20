@@ -66,6 +66,19 @@
   margin-top: -6px;
 }
 
+.rondel {
+  border-style: solid;
+  border-color: rgb(6, 15, 109);
+}
+
+.h5 {
+  color: green;
+}
+
+.bold {
+  text-decoration:underline;
+  font-weight: bold;
+}
 
 /*pagination styling*/
 

@@ -1,15 +1,44 @@
 <%= form_with(model: article) do |form| %>
 
-  <div class="container mb-3" style="background:white">
-  <%= render 'shared/errors', obj: @article %>
+  <div class="container mb-3 rondel">
+  <%= render 'shared/errors', obj: @article %><br>
+
+    <div class="row mt-3">
+    <div class="col-12">
+      <div class="h5 border-bottom mb-3 font-weight-bold">Paso 1 - Primeros Detalles</div>
+    </div>
+  </div>
+  
+  <div class="col-4">
   <div class="form-label"><br>
-    <%= form.label :title, class: "col-2 col-form-label" %>
+    <%= form.label :Nombre_Itinerario, class: "col-form-label" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-label">
-    <%= form.label :description, class: "col-2 col-form-label" %>
-    <%= form.text_area :description, rows:8, class: "form-control" %>
+    <%= form.label :Nombre_del_cliente, class: "col-form-label" %>
+    <%= form.text_field :client_name, class: "form-control" %>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :Mail_del_cliente, class: "col-form-label" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "ejemplo@mail.com" %>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :Teléfono_del_cliente, class: "col-form-label" %>
+    <%= form.phone_field :phone, class: "form-control"%>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :Número_de_viajeros, class: "col-form-label" %>
+    <%= form.text_field :travellers, class: "form-control" %>
+  </div>
+  </div>
+
+  <div class="form-label">
+    <%= form.label :Observaciones, class: "mb-2 col-form-label" %>
+    <%= form.text_area :description, rows:4, class: "form-control" %>
   </div>
 
   <div>

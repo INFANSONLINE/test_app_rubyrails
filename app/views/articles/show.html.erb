@@ -1,18 +1,48 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
+<p style="color: red"><%= alert %></p><br>
 
 <div class= "container">
-<div class="card text-center">
-  <div class="card-header"><%= @article.title %>
+<div class="card">
+  <div class="card-header">Itinerario de viaje: <%= @article.title.upcase %>
+  <p></p><br>
+  <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Primeros detalles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Vuelos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hospedaje</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Traslados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Planificación</a>
+      </li>
+    </ul>
+  </div><br>
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="h5 border-bottom mb-3 font-weight-bold"> - Primeros Detalles</div>
+    </div>
   </div>
   <div class="card-body">
-    <p class="card-text"><%= simple_format(@article.description) %></p>
+    <div class="card-text bold">Cliente:</div><p class="card-text"><%= (@article.client_name) %></p>
+    <div class="card-text bold">Mail:</div><p class="card-text"><%= (@article.email) %></p>
+    <div class="card-text bold">Teléfono:</div><p class="card-text"><%= (@article.phone) %></p>
+    <div class="card-text bold">Número de viajeros:</div><p class="card-text"><%= (@article.travellers) %></p>
+    <div class="card-text bold">Observaciones:</div><p class="card-text"><%= (@article.description) %></p><br>
+  
+
+
     <% if logged_in? && (@article.user == @current_user || @current_user.admin?) %>
       <td><%= link_to "Editar", edit_article_path(@article), class:"btn btn-success" %></td>
       <% end %>
   </div>
-  <div class="card-footer text-muted"><%= time_ago_in_words(@article.created_at)%>
+  <div class="card-footer text-muted">Creado hace: <%= time_ago_in_words(@article.created_at)%>
   </div>
 </div>
 </div><br>
